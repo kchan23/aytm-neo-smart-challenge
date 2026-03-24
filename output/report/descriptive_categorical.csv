@@ -1,0 +1,68 @@
+model,Q3,Count,Total,Pct,Variable,Q6,Q14,Q18,Q20_1,Q20_2
+GPT-4.1-mini,Home office / remote workspace,10,30,33.3,Q3,,,,,
+GPT-4.1-mini,"Adventure basecamp (gear storage, bike workshop, hangout space)",6,30,20.0,Q3,,,,,
+GPT-4.1-mini,"Wellness studio (gym, yoga, meditation)",5,30,16.7,Q3,,,,,
+GPT-4.1-mini,Children's playroom,3,30,10.0,Q3,,,,,
+GPT-4.1-mini,"Creative studio (music, podcast, art)",3,30,10.0,Q3,,,,,
+GPT-4.1-mini,Guest suite / short-term rental (STR) income,2,30,6.7,Q3,,,,,
+GPT-4.1-mini,General storage / premium speed shed,1,30,3.3,Q3,,,,,
+Gemini-2.5-Flash,"Adventure basecamp (gear storage, bike workshop, hangout space)",6,30,20.0,Q3,,,,,
+Gemini-2.5-Flash,Guest suite / short-term rental (STR) income,6,30,20.0,Q3,,,,,
+Gemini-2.5-Flash,"Wellness studio (gym, yoga, meditation)",6,30,20.0,Q3,,,,,
+Gemini-2.5-Flash,Home office / remote workspace,5,30,16.7,Q3,,,,,
+Gemini-2.5-Flash,General storage / premium speed shed,4,30,13.3,Q3,,,,,
+Gemini-2.5-Flash,"Creative studio (music, podcast, art)",3,30,10.0,Q3,,,,,
+GPT-4.1-mini,,12,30,40.0,Q6,"The total cost (~$23,000)",,,,
+GPT-4.1-mini,,9,30,30.0,Q6,HOA restrictions or community rules,,,,
+GPT-4.1-mini,,3,30,10.0,Q6,Lack of financing options,,,,
+GPT-4.1-mini,,3,30,10.0,Q6,Uncertainty about whether a building permit is required,,,,
+GPT-4.1-mini,,1,30,3.3,Q6,Concerns about build quality or durability,,,,
+GPT-4.1-mini,,1,30,3.3,Q6,None — I have no significant concerns,,,,
+GPT-4.1-mini,,1,30,3.3,Q6,Uncertainty about resale value,,,,
+Gemini-2.5-Flash,,9,30,30.0,Q6,"The total cost (~$23,000)",,,,
+Gemini-2.5-Flash,,7,30,23.3,Q6,HOA restrictions or community rules,,,,
+Gemini-2.5-Flash,,7,30,23.3,Q6,Lack of financing options,,,,
+Gemini-2.5-Flash,,2,30,6.7,Q6,None — I have no significant concerns,,,,
+Gemini-2.5-Flash,,2,30,6.7,Q6,Uncertainty about whether a building permit is required,,,,
+Gemini-2.5-Flash,,1,30,3.3,Q6,Concerns about build quality or durability,,,,
+Gemini-2.5-Flash,,1,30,3.3,Q6,Limited backyard space or access,,,,
+Gemini-2.5-Flash,,1,30,3.3,Q6,Uncertainty about resale value,,,,
+GPT-4.1-mini,,8,30,26.7,Q14,,Concept 5: Message-First,,,
+GPT-4.1-mini,,6,30,20.0,Q14,,Concept 1: Backyard Home Office,,,
+GPT-4.1-mini,,6,30,20.0,Q14,,Concept 2: Guest Suite / STR Income,,,
+GPT-4.1-mini,,6,30,20.0,Q14,,Concept 3: Wellness / Studio Space,,,
+GPT-4.1-mini,,4,30,13.3,Q14,,Concept 4: Adventure Lifestyle / Community,,,
+Gemini-2.5-Flash,,10,30,33.3,Q14,,Concept 5: Message-First,,,
+Gemini-2.5-Flash,,7,30,23.3,Q14,,Concept 3: Wellness / Studio Space,,,
+Gemini-2.5-Flash,,6,30,20.0,Q14,,Concept 1: Backyard Home Office,,,
+Gemini-2.5-Flash,,4,30,13.3,Q14,,Concept 2: Guest Suite / STR Income,,,
+Gemini-2.5-Flash,,3,30,10.0,Q14,,Concept 4: Adventure Lifestyle / Community,,,
+GPT-4.1-mini,,10,30,33.3,Q18,,,Build quality and details,,
+GPT-4.1-mini,,10,30,33.3,Q18,,,Installation speed,,
+GPT-4.1-mini,,10,30,33.3,Q18,,,Permit-light positioning,,
+Gemini-2.5-Flash,,13,30,43.3,Q18,,,Permit-light positioning,,
+Gemini-2.5-Flash,,10,30,33.3,Q18,,,Build quality and details,,
+Gemini-2.5-Flash,,7,30,23.3,Q18,,,Installation speed,,
+GPT-4.1-mini,,11,30,36.7,Q20_1,,,,"Social media ads (Facebook, Instagram)",
+GPT-4.1-mini,,9,30,30.0,Q20_1,,,,Home improvement expos,
+GPT-4.1-mini,,4,30,13.3,Q20_1,,,,Google / Search ads,
+GPT-4.1-mini,,2,30,6.7,Q20_1,,,,Friend / family referral,
+GPT-4.1-mini,,2,30,6.7,Q20_1,,,,Outdoor club sponsorships / community events,
+GPT-4.1-mini,,2,30,6.7,Q20_1,,,,Real estate partner referrals,
+Gemini-2.5-Flash,,10,30,33.3,Q20_1,,,,"Social media ads (Facebook, Instagram)",
+Gemini-2.5-Flash,,6,30,20.0,Q20_1,,,,Home improvement expos,
+Gemini-2.5-Flash,,4,30,13.3,Q20_1,,,,Friend / family referral,
+Gemini-2.5-Flash,,4,30,13.3,Q20_1,,,,Google / Search ads,
+Gemini-2.5-Flash,,4,30,13.3,Q20_1,,,,Real estate partner referrals,
+Gemini-2.5-Flash,,2,30,6.7,Q20_1,,,,Outdoor club sponsorships / community events,
+GPT-4.1-mini,,10,27,37.0,Q20_2,,,,,Friend / family referral
+GPT-4.1-mini,,6,27,22.2,Q20_2,,,,,Google / Search ads
+GPT-4.1-mini,,4,27,14.8,Q20_2,,,,,Outdoor club sponsorships / community events
+GPT-4.1-mini,,4,27,14.8,Q20_2,,,,,Real estate partner referrals
+GPT-4.1-mini,,3,27,11.1,Q20_2,,,,,"Social media ads (Facebook, Instagram)"
+Gemini-2.5-Flash,,9,26,34.6,Q20_2,,,,,Friend / family referral
+Gemini-2.5-Flash,,8,26,30.8,Q20_2,,,,,Google / Search ads
+Gemini-2.5-Flash,,4,26,15.4,Q20_2,,,,,"Social media ads (Facebook, Instagram)"
+Gemini-2.5-Flash,,2,26,7.7,Q20_2,,,,,Home improvement expos
+Gemini-2.5-Flash,,2,26,7.7,Q20_2,,,,,Outdoor club sponsorships / community events
+Gemini-2.5-Flash,,1,26,3.8,Q20_2,,,,,Real estate partner referrals

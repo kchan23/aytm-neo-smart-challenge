@@ -1,0 +1,426 @@
+model,Variable,Label,N,Mean,SD,Median,IQR,Grouping,segment_name
+GPT-4.1-mini,Q0b,Category Interest,30,3.566666666666667,0.9352607356658147,4.0,1.0,model,
+GPT-4.1-mini,Q1,Purchase Interest ($23K),30,3.8666666666666667,1.0080138659874616,4.0,1.5,model,
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),30,3.1,0.8847364696279086,3.0,1.0,model,
+GPT-4.1-mini,Q7,Permit-Light Effect,30,3.8666666666666667,0.6814453874610596,4.0,1.0,model,
+GPT-4.1-mini,Q15,Value: Permit-Light,30,4.0,0.7427813527082074,4.0,0.0,model,
+GPT-4.1-mini,Q16,Value: Install Speed,30,3.7,0.8366600265340757,4.0,1.0,model,
+GPT-4.1-mini,Q17,Value: Build Quality,30,3.7666666666666666,0.897634182970313,4.0,1.0,model,
+GPT-4.1-mini,Q19,Sponsorship Impact,30,3.1333333333333333,1.3060425438846859,3.0,2.0,model,
+GPT-4.1-mini,Q5_cost,Cost (~$23K),30,3.066666666666667,1.048260737942924,3.0,1.75,model,
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,30,3.2666666666666666,1.048260737942924,3.0,2.0,model,
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,30,3.033333333333333,0.7648904962570576,3.0,0.0,model,
+GPT-4.1-mini,Q5_space,Limited Space,30,2.7,1.1492126240049811,3.0,1.0,model,
+GPT-4.1-mini,Q5_financing,Lack of Financing,30,2.6,1.132589343358684,2.5,1.0,model,
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,30,2.6,0.9684683962230045,2.5,1.0,model,
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,30,3.066666666666667,1.142692927446732,3.0,2.0,model,
+GPT-4.1-mini,Q9a,Home Office,30,3.2,0.9613209303008454,3.0,1.0,model,
+GPT-4.1-mini,Q9b,Home Office (Likelihood),30,2.6,0.9321831993987979,2.0,1.0,model,
+GPT-4.1-mini,Q10a,Guest Suite / STR,30,3.1,1.0618786215460558,3.0,1.75,model,
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),30,2.933333333333333,1.01483252680985,3.0,2.0,model,
+GPT-4.1-mini,Q11a,Wellness Studio,30,3.5,1.0085838484282528,3.5,1.0,model,
+GPT-4.1-mini,Q11b,Wellness (Likelihood),30,2.8333333333333335,1.176884646541184,3.0,2.0,model,
+GPT-4.1-mini,Q12a,Adventure Basecamp,30,2.6,1.2205143065174586,2.0,1.0,model,
+GPT-4.1-mini,Q12b,Adventure (Likelihood),30,2.7333333333333334,1.0148325268098495,3.0,1.0,model,
+GPT-4.1-mini,Q13a,Simplicity,30,3.966666666666667,0.8502873077655143,4.0,2.0,model,
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),30,3.3,0.7943767889097848,3.0,1.0,model,
+Gemini-2.5-Flash,Q0b,Category Interest,30,3.2,0.8051557998728978,3.0,0.75,model,
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),30,3.566666666666667,1.0063019815944514,4.0,1.0,model,
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),30,2.7333333333333334,0.8683449709106094,3.0,1.0,model,
+Gemini-2.5-Flash,Q7,Permit-Light Effect,30,3.8666666666666667,0.9371024061116424,4.0,2.0,model,
+Gemini-2.5-Flash,Q15,Value: Permit-Light,30,3.6333333333333333,0.9643054793328016,4.0,1.0,model,
+Gemini-2.5-Flash,Q16,Value: Install Speed,30,3.466666666666667,0.7760791522613608,3.0,1.0,model,
+Gemini-2.5-Flash,Q17,Value: Build Quality,30,3.9,0.844862771962569,4.0,1.75,model,
+Gemini-2.5-Flash,Q19,Sponsorship Impact,30,2.8333333333333335,1.1768846465411842,3.0,2.0,model,
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),30,3.1,1.2134305884983487,3.0,2.0,model,
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,30,3.0,0.8304547985373997,3.0,0.75,model,
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,30,3.033333333333333,0.9278574999588488,3.0,2.0,model,
+Gemini-2.5-Flash,Q5_space,Limited Space,30,2.2666666666666666,0.9071871393197363,2.0,1.0,model,
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,30,2.533333333333333,1.0742546199601595,2.5,1.0,model,
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,30,2.466666666666667,1.0416609195243753,2.0,1.0,model,
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,30,2.5,0.8200084103858011,2.5,1.0,model,
+Gemini-2.5-Flash,Q9a,Home Office,30,3.2666666666666666,0.9444331755018486,3.0,1.75,model,
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),30,2.8,0.8051557998728978,3.0,1.0,model,
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,30,2.966666666666667,1.2452207485597393,3.0,2.0,model,
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),30,2.3666666666666667,1.1290317283753195,2.0,1.0,model,
+Gemini-2.5-Flash,Q11a,Wellness Studio,30,2.8333333333333335,1.1167481527997303,3.0,2.0,model,
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),30,2.5,1.1670771035014103,2.0,1.0,model,
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,30,2.7333333333333334,1.0806553992619583,2.0,1.75,model,
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),30,2.2,1.0305673027596216,2.0,1.75,model,
+Gemini-2.5-Flash,Q13a,Simplicity,30,3.6666666666666665,0.8840866447369844,4.0,1.0,model,
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),30,3.2,1.0305673027596216,3.0,1.0,model,
+,Q0b,Category Interest,12,3.1666666666666665,0.5773502691896257,3.0,0.25,segment,Active Adventurer
+,Q1,Purchase Interest ($23K),12,3.1666666666666665,1.1146408580454255,3.0,1.25,segment,Active Adventurer
+,Q2,Purchase Likelihood (24mo),12,3.0,0.6030226891555273,3.0,0.0,segment,Active Adventurer
+,Q7,Permit-Light Effect,12,3.6666666666666665,0.8876253645985945,3.0,1.25,segment,Active Adventurer
+,Q15,Value: Permit-Light,12,3.1666666666666665,0.937436866561092,3.5,2.0,segment,Active Adventurer
+,Q16,Value: Install Speed,12,3.6666666666666665,0.7784989441615231,3.5,1.0,segment,Active Adventurer
+,Q17,Value: Build Quality,12,3.5,0.9045340337332909,3.0,1.0,segment,Active Adventurer
+,Q19,Sponsorship Impact,12,4.333333333333333,0.6513389472789295,4.0,1.0,segment,Active Adventurer
+,Q5_cost,Cost (~$23K),12,3.3333333333333335,0.7784989441615229,3.0,1.0,segment,Active Adventurer
+,Q5_hoa,HOA Restrictions,12,3.0,0.7385489458759964,3.0,0.5,segment,Active Adventurer
+,Q5_permit,Permit Uncertainty,12,2.75,0.8660254037844386,3.0,1.0,segment,Active Adventurer
+,Q5_space,Limited Space,12,2.6666666666666665,1.0730867399773196,2.5,1.0,segment,Active Adventurer
+,Q5_financing,Lack of Financing,12,3.3333333333333335,0.6513389472789296,3.0,0.25,segment,Active Adventurer
+,Q5_quality,Build Quality Concerns,12,1.9166666666666667,0.7929614610987591,2.0,1.25,segment,Active Adventurer
+,Q5_resale,Resale Value Uncertainty,12,2.6666666666666665,0.984731927834662,3.0,1.0,segment,Active Adventurer
+,Q9a,Home Office,12,2.6666666666666665,0.7784989441615231,3.0,1.0,segment,Active Adventurer
+,Q9b,Home Office (Likelihood),12,2.25,0.621581560508061,2.0,1.0,segment,Active Adventurer
+,Q10a,Guest Suite / STR,12,2.5833333333333335,0.9962049198956219,3.0,1.0,segment,Active Adventurer
+,Q10b,Guest Suite (Likelihood),12,1.9166666666666667,0.6685579234215215,2.0,0.25,segment,Active Adventurer
+,Q11a,Wellness Studio,12,2.8333333333333335,0.7177405625652734,3.0,1.0,segment,Active Adventurer
+,Q11b,Wellness (Likelihood),12,2.8333333333333335,0.7177405625652734,3.0,1.0,segment,Active Adventurer
+,Q12a,Adventure Basecamp,12,4.25,0.621581560508061,4.0,1.0,segment,Active Adventurer
+,Q12b,Adventure (Likelihood),12,3.8333333333333335,0.7177405625652734,4.0,1.0,segment,Active Adventurer
+,Q13a,Simplicity,12,3.5833333333333335,0.7929614610987591,4.0,1.0,segment,Active Adventurer
+,Q13b,Simplicity (Likelihood),12,2.4166666666666665,0.90033663737852,2.5,1.0,segment,Active Adventurer
+,Q0b,Category Interest,12,2.75,0.45226701686664544,3.0,0.25,segment,Budget-Conscious DIYer
+,Q1,Purchase Interest ($23K),12,2.9166666666666665,0.9962049198956219,3.0,2.0,segment,Budget-Conscious DIYer
+,Q2,Purchase Likelihood (24mo),12,2.25,1.0552897060221726,2.0,1.25,segment,Budget-Conscious DIYer
+,Q7,Permit-Light Effect,12,3.5833333333333335,0.7929614610987591,4.0,1.0,segment,Budget-Conscious DIYer
+,Q15,Value: Permit-Light,12,4.083333333333333,0.9962049198956219,4.0,1.25,segment,Budget-Conscious DIYer
+,Q16,Value: Install Speed,12,3.75,0.621581560508061,4.0,1.0,segment,Budget-Conscious DIYer
+,Q17,Value: Build Quality,12,3.0,0.7385489458759964,3.0,0.5,segment,Budget-Conscious DIYer
+,Q19,Sponsorship Impact,12,2.5833333333333335,1.164500152881315,3.0,1.5,segment,Budget-Conscious DIYer
+,Q5_cost,Cost (~$23K),12,4.333333333333333,0.7784989441615229,4.5,1.0,segment,Budget-Conscious DIYer
+,Q5_hoa,HOA Restrictions,12,2.5833333333333335,0.792961461098759,2.0,1.0,segment,Budget-Conscious DIYer
+,Q5_permit,Permit Uncertainty,12,3.0,0.7385489458759964,3.0,0.5,segment,Budget-Conscious DIYer
+,Q5_space,Limited Space,12,3.1666666666666665,1.1146408580454255,3.0,2.0,segment,Budget-Conscious DIYer
+,Q5_financing,Lack of Financing,12,3.8333333333333335,0.5773502691896257,4.0,0.25,segment,Budget-Conscious DIYer
+,Q5_quality,Build Quality Concerns,12,2.75,0.7537783614444091,3.0,1.0,segment,Budget-Conscious DIYer
+,Q5_resale,Resale Value Uncertainty,12,2.5833333333333335,0.9962049198956219,3.0,1.0,segment,Budget-Conscious DIYer
+,Q9a,Home Office,12,2.6666666666666665,0.778498944161523,2.5,1.0,segment,Budget-Conscious DIYer
+,Q9b,Home Office (Likelihood),12,2.6666666666666665,0.7784989441615231,3.0,1.0,segment,Budget-Conscious DIYer
+,Q10a,Guest Suite / STR,12,2.5833333333333335,1.164500152881315,3.0,1.5,segment,Budget-Conscious DIYer
+,Q10b,Guest Suite (Likelihood),12,1.8333333333333333,0.9374368665610923,2.0,1.0,segment,Budget-Conscious DIYer
+,Q11a,Wellness Studio,12,2.5,1.087114613009218,2.0,1.25,segment,Budget-Conscious DIYer
+,Q11b,Wellness (Likelihood),12,1.9166666666666667,0.6685579234215215,2.0,0.25,segment,Budget-Conscious DIYer
+,Q12a,Adventure Basecamp,12,2.1666666666666665,0.8348471099367218,2.0,0.25,segment,Budget-Conscious DIYer
+,Q12b,Adventure (Likelihood),12,2.1666666666666665,0.7177405625652734,2.0,1.0,segment,Budget-Conscious DIYer
+,Q13a,Simplicity,12,4.166666666666667,0.8348471099367217,4.0,1.25,segment,Budget-Conscious DIYer
+,Q13b,Simplicity (Likelihood),12,3.5833333333333335,0.90033663737852,3.5,1.0,segment,Budget-Conscious DIYer
+,Q0b,Category Interest,12,4.083333333333333,0.7929614610987591,4.0,1.25,segment,Property Maximizer
+,Q1,Purchase Interest ($23K),12,4.25,0.45226701686664544,4.0,0.25,segment,Property Maximizer
+,Q2,Purchase Likelihood (24mo),12,3.0833333333333335,0.7929614610987591,3.0,1.25,segment,Property Maximizer
+,Q7,Permit-Light Effect,12,4.416666666666667,0.6685579234215215,4.5,1.0,segment,Property Maximizer
+,Q15,Value: Permit-Light,12,4.083333333333333,0.6685579234215215,4.0,0.25,segment,Property Maximizer
+,Q16,Value: Install Speed,12,3.9166666666666665,0.7929614610987591,4.0,1.25,segment,Property Maximizer
+,Q17,Value: Build Quality,12,4.333333333333333,0.4923659639173309,4.0,1.0,segment,Property Maximizer
+,Q19,Sponsorship Impact,12,2.0,0.9534625892455924,2.0,2.0,segment,Property Maximizer
+,Q5_cost,Cost (~$23K),12,1.8333333333333333,0.5773502691896257,2.0,0.25,segment,Property Maximizer
+,Q5_hoa,HOA Restrictions,12,3.6666666666666665,1.1547005383792517,3.5,2.0,segment,Property Maximizer
+,Q5_permit,Permit Uncertainty,12,3.5833333333333335,0.9962049198956219,4.0,1.0,segment,Property Maximizer
+,Q5_space,Limited Space,12,1.5,0.674199862463242,1.0,1.0,segment,Property Maximizer
+,Q5_financing,Lack of Financing,12,1.6666666666666667,0.6513389472789296,2.0,1.0,segment,Property Maximizer
+,Q5_quality,Build Quality Concerns,12,3.3333333333333335,1.1547005383792517,3.5,2.0,segment,Property Maximizer
+,Q5_resale,Resale Value Uncertainty,12,3.3333333333333335,1.2309149097933272,3.5,1.25,segment,Property Maximizer
+,Q9a,Home Office,12,3.0833333333333335,0.7929614610987591,3.0,1.25,segment,Property Maximizer
+,Q9b,Home Office (Likelihood),12,2.3333333333333335,0.7784989441615231,2.5,1.0,segment,Property Maximizer
+,Q10a,Guest Suite / STR,12,4.333333333333333,0.49236596391733084,4.0,1.0,segment,Property Maximizer
+,Q10b,Guest Suite (Likelihood),12,4.0,0.4264014327112209,4.0,0.0,segment,Property Maximizer
+,Q11a,Wellness Studio,12,2.9166666666666665,0.90033663737852,3.0,0.5,segment,Property Maximizer
+,Q11b,Wellness (Likelihood),12,1.75,0.8660254037844386,1.5,1.25,segment,Property Maximizer
+,Q12a,Adventure Basecamp,12,1.8333333333333333,0.7177405625652734,2.0,1.0,segment,Property Maximizer
+,Q12b,Adventure (Likelihood),12,1.5833333333333333,0.5149286505444373,2.0,1.0,segment,Property Maximizer
+,Q13a,Simplicity,12,4.0,1.044465935734187,4.0,2.0,segment,Property Maximizer
+,Q13b,Simplicity (Likelihood),12,3.1666666666666665,0.7177405625652734,3.0,1.0,segment,Property Maximizer
+,Q0b,Category Interest,12,3.5833333333333335,1.0836246694508318,4.0,1.0,segment,Remote Professional
+,Q1,Purchase Interest ($23K),12,4.166666666666667,0.8348471099367217,4.0,1.25,segment,Remote Professional
+,Q2,Purchase Likelihood (24mo),12,3.3333333333333335,0.8876253645985948,3.0,1.0,segment,Remote Professional
+,Q7,Permit-Light Effect,12,3.9166666666666665,0.7929614610987591,4.0,0.0,segment,Remote Professional
+,Q15,Value: Permit-Light,12,4.083333333333333,0.5149286505444371,4.0,0.0,segment,Remote Professional
+,Q16,Value: Install Speed,12,3.6666666666666665,0.8876253645985945,4.0,1.0,segment,Remote Professional
+,Q17,Value: Build Quality,12,4.0,0.7385489458759964,4.0,0.5,segment,Remote Professional
+,Q19,Sponsorship Impact,12,3.1666666666666665,1.0298573010888745,3.0,0.5,segment,Remote Professional
+,Q5_cost,Cost (~$23K),12,2.6666666666666665,0.9847319278346619,3.0,1.0,segment,Remote Professional
+,Q5_hoa,HOA Restrictions,12,3.0,0.9534625892455924,3.0,1.25,segment,Remote Professional
+,Q5_permit,Permit Uncertainty,12,3.0833333333333335,0.6685579234215215,3.0,0.25,segment,Remote Professional
+,Q5_space,Limited Space,12,2.4166666666666665,0.90033663737852,2.5,1.0,segment,Remote Professional
+,Q5_financing,Lack of Financing,12,1.9166666666666667,0.6685579234215215,2.0,0.25,segment,Remote Professional
+,Q5_quality,Build Quality Concerns,12,1.9166666666666667,0.7929614610987591,2.0,1.25,segment,Remote Professional
+,Q5_resale,Resale Value Uncertainty,12,2.75,1.2154310870109943,2.0,2.0,segment,Remote Professional
+,Q9a,Home Office,12,4.25,0.621581560508061,4.0,1.0,segment,Remote Professional
+,Q9b,Home Office (Likelihood),12,3.5,0.9045340337332909,4.0,1.0,segment,Remote Professional
+,Q10a,Guest Suite / STR,12,2.75,1.0552897060221726,3.0,1.0,segment,Remote Professional
+,Q10b,Guest Suite (Likelihood),12,2.5,1.0,2.5,1.0,segment,Remote Professional
+,Q11a,Wellness Studio,12,3.0833333333333335,1.0836246694508316,3.0,1.25,segment,Remote Professional
+,Q11b,Wellness (Likelihood),12,2.6666666666666665,1.1547005383792515,2.5,2.0,segment,Remote Professional
+,Q12a,Adventure Basecamp,12,2.5833333333333335,0.792961461098759,3.0,1.0,segment,Remote Professional
+,Q12b,Adventure (Likelihood),12,2.3333333333333335,0.4923659639173309,2.0,1.0,segment,Remote Professional
+,Q13a,Simplicity,12,3.9166666666666665,0.7929614610987591,4.0,0.0,segment,Remote Professional
+,Q13b,Simplicity (Likelihood),12,3.75,0.7537783614444091,4.0,1.0,segment,Remote Professional
+,Q0b,Category Interest,12,3.3333333333333335,0.8876253645985945,3.0,1.0,segment,Wellness Seeker
+,Q1,Purchase Interest ($23K),12,4.083333333333333,0.7929614610987591,4.0,1.25,segment,Wellness Seeker
+,Q2,Purchase Likelihood (24mo),12,2.9166666666666665,0.7929614610987591,3.0,1.25,segment,Wellness Seeker
+,Q7,Permit-Light Effect,12,3.75,0.7537783614444091,4.0,1.0,segment,Wellness Seeker
+,Q15,Value: Permit-Light,12,3.6666666666666665,0.8876253645985945,4.0,1.0,segment,Wellness Seeker
+,Q16,Value: Install Speed,12,2.9166666666666665,0.6685579234215215,3.0,0.25,segment,Wellness Seeker
+,Q17,Value: Build Quality,12,4.333333333333333,0.6513389472789295,4.0,1.0,segment,Wellness Seeker
+,Q19,Sponsorship Impact,12,2.8333333333333335,1.1146408580454257,2.5,1.0,segment,Wellness Seeker
+,Q5_cost,Cost (~$23K),12,3.25,0.7537783614444091,3.0,1.0,segment,Wellness Seeker
+,Q5_hoa,HOA Restrictions,12,3.4166666666666665,0.792961461098759,3.0,1.0,segment,Wellness Seeker
+,Q5_permit,Permit Uncertainty,12,2.75,0.7537783614444091,3.0,1.0,segment,Wellness Seeker
+,Q5_space,Limited Space,12,2.6666666666666665,0.7784989441615231,2.5,1.0,segment,Wellness Seeker
+,Q5_financing,Lack of Financing,12,2.0833333333333335,0.90033663737852,2.0,0.5,segment,Wellness Seeker
+,Q5_quality,Build Quality Concerns,12,2.75,0.7537783614444091,3.0,1.0,segment,Wellness Seeker
+,Q5_resale,Resale Value Uncertainty,12,2.5833333333333335,0.5149286505444373,3.0,1.0,segment,Wellness Seeker
+,Q9a,Home Office,12,3.5,0.7977240352174656,3.5,1.0,segment,Wellness Seeker
+,Q9b,Home Office (Likelihood),12,2.75,0.7537783614444091,3.0,1.0,segment,Wellness Seeker
+,Q10a,Guest Suite / STR,12,2.9166666666666665,0.9962049198956218,3.0,2.0,segment,Wellness Seeker
+,Q10b,Guest Suite (Likelihood),12,3.0,0.7385489458759964,3.0,0.5,segment,Wellness Seeker
+,Q11a,Wellness Studio,12,4.5,0.5222329678670935,4.5,1.0,segment,Wellness Seeker
+,Q11b,Wellness (Likelihood),12,4.166666666666667,0.5773502691896257,4.0,0.25,segment,Wellness Seeker
+,Q12a,Adventure Basecamp,12,2.5,1.0,2.0,0.25,segment,Wellness Seeker
+,Q12b,Adventure (Likelihood),12,2.4166666666666665,1.164500152881315,2.0,1.5,segment,Wellness Seeker
+,Q13a,Simplicity,12,3.4166666666666665,0.7929614610987591,3.0,1.0,segment,Wellness Seeker
+,Q13b,Simplicity (Likelihood),12,3.3333333333333335,0.7784989441615231,3.5,1.0,segment,Wellness Seeker
+GPT-4.1-mini,Q0b,Category Interest,6,3.5,0.5477225575051661,3.5,1.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q1,Purchase Interest ($23K),6,3.6666666666666665,1.0327955589886446,4.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q7,Permit-Light Effect,6,3.3333333333333335,0.816496580927726,3.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q15,Value: Permit-Light,6,3.5,0.8366600265340756,4.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q16,Value: Install Speed,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q17,Value: Build Quality,6,3.3333333333333335,1.0327955589886446,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q19,Sponsorship Impact,6,4.5,0.8366600265340756,5.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_cost,Cost (~$23K),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,6,3.0,0.8944271909999159,3.0,1.5,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,6,2.6666666666666665,0.5163977794943222,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_space,Limited Space,6,2.8333333333333335,1.1690451944500122,2.5,1.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_financing,Lack of Financing,6,3.3333333333333335,0.816496580927726,3.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,6,3.0,1.0954451150103321,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q9a,Home Office,6,2.8333333333333335,0.983192080250175,3.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q9b,Home Office (Likelihood),6,2.1666666666666665,0.408248290463863,2.0,0.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q10a,Guest Suite / STR,6,2.6666666666666665,0.5163977794943222,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),6,2.1666666666666665,0.752772652709081,2.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q11a,Wellness Studio,6,3.3333333333333335,0.5163977794943222,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q11b,Wellness (Likelihood),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q12a,Adventure Basecamp,6,4.166666666666667,0.7527726527090809,4.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q12b,Adventure (Likelihood),6,4.166666666666667,0.752772652709081,4.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q13a,Simplicity,6,3.5,1.0488088481701516,3.5,1.0,model×segment,Active Adventurer
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Active Adventurer
+GPT-4.1-mini,Q0b,Category Interest,6,2.5,0.5477225575051661,2.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q1,Purchase Interest ($23K),6,2.8333333333333335,1.1690451944500122,3.0,1.5,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),6,2.8333333333333335,1.1690451944500122,3.0,1.5,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q7,Permit-Light Effect,6,3.8333333333333335,0.40824829046386296,4.0,0.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q15,Value: Permit-Light,6,4.5,0.5477225575051661,4.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q16,Value: Install Speed,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q17,Value: Build Quality,6,3.0,0.8944271909999159,3.0,1.5,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q19,Sponsorship Impact,6,3.0,1.0954451150103321,3.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_cost,Cost (~$23K),6,4.333333333333333,0.816496580927726,4.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,6,2.8333333333333335,0.983192080250175,2.5,1.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_space,Limited Space,6,3.5,1.0488088481701516,3.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_financing,Lack of Financing,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,6,2.3333333333333335,1.2110601416389968,2.5,1.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q9a,Home Office,6,2.6666666666666665,0.816496580927726,2.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q9b,Home Office (Likelihood),6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q10a,Guest Suite / STR,6,3.0,1.0954451150103321,3.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),6,2.3333333333333335,1.0327955589886446,2.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q11a,Wellness Studio,6,2.6666666666666665,1.2110601416389968,2.5,1.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q11b,Wellness (Likelihood),6,2.0,0.6324555320336759,2.0,0.0,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q12a,Adventure Basecamp,6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q12b,Adventure (Likelihood),6,2.6666666666666665,0.5163977794943222,3.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q13a,Simplicity,6,4.166666666666667,0.752772652709081,4.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Budget-Conscious DIYer
+GPT-4.1-mini,Q0b,Category Interest,6,4.166666666666667,0.983192080250175,4.5,1.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q1,Purchase Interest ($23K),6,4.166666666666667,0.408248290463863,4.0,0.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q7,Permit-Light Effect,6,4.333333333333333,0.5163977794943222,4.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q15,Value: Permit-Light,6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q16,Value: Install Speed,6,4.0,0.8944271909999159,4.0,1.5,model×segment,Property Maximizer
+GPT-4.1-mini,Q17,Value: Build Quality,6,4.333333333333333,0.5163977794943223,4.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q19,Sponsorship Impact,6,2.0,0.8944271909999159,2.0,1.5,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_cost,Cost (~$23K),6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,6,3.6666666666666665,1.2110601416389968,3.5,1.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,6,3.5,1.0488088481701516,3.5,1.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_space,Limited Space,6,1.5,0.8366600265340756,1.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_financing,Lack of Financing,6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,6,3.3333333333333335,1.2110601416389968,3.5,1.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,6,4.166666666666667,0.752772652709081,4.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q9a,Home Office,6,3.0,0.8944271909999159,3.0,1.5,model×segment,Property Maximizer
+GPT-4.1-mini,Q9b,Home Office (Likelihood),6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q10a,Guest Suite / STR,6,4.5,0.5477225575051661,4.5,1.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),6,4.0,0.0,4.0,0.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q11a,Wellness Studio,6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q11b,Wellness (Likelihood),6,2.1666666666666665,0.983192080250175,2.5,1.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q12a,Adventure Basecamp,6,2.0,0.8944271909999159,2.0,1.5,model×segment,Property Maximizer
+GPT-4.1-mini,Q12b,Adventure (Likelihood),6,1.8333333333333333,0.408248290463863,2.0,0.0,model×segment,Property Maximizer
+GPT-4.1-mini,Q13a,Simplicity,6,4.333333333333333,1.0327955589886444,5.0,1.5,model×segment,Property Maximizer
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Property Maximizer
+GPT-4.1-mini,Q0b,Category Interest,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Remote Professional
+GPT-4.1-mini,Q1,Purchase Interest ($23K),6,4.333333333333333,0.8164965809277259,4.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),6,3.5,1.0488088481701516,3.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q7,Permit-Light Effect,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Remote Professional
+GPT-4.1-mini,Q15,Value: Permit-Light,6,4.166666666666667,0.408248290463863,4.0,0.0,model×segment,Remote Professional
+GPT-4.1-mini,Q16,Value: Install Speed,6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q17,Value: Build Quality,6,4.166666666666667,0.752772652709081,4.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q19,Sponsorship Impact,6,3.5,1.224744871391589,3.0,1.5,model×segment,Remote Professional
+GPT-4.1-mini,Q5_cost,Cost (~$23K),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,6,3.1666666666666665,1.3291601358251257,3.0,2.0,model×segment,Remote Professional
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,6,3.0,0.6324555320336759,3.0,0.0,model×segment,Remote Professional
+GPT-4.1-mini,Q5_space,Limited Space,6,2.8333333333333335,0.983192080250175,3.0,0.0,model×segment,Remote Professional
+GPT-4.1-mini,Q5_financing,Lack of Financing,6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,6,3.1666666666666665,1.3291601358251257,3.0,2.0,model×segment,Remote Professional
+GPT-4.1-mini,Q9a,Home Office,6,4.333333333333333,0.8164965809277259,4.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q9b,Home Office (Likelihood),6,3.6666666666666665,1.0327955589886446,4.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q10a,Guest Suite / STR,6,2.5,0.5477225575051661,2.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),6,2.6666666666666665,1.0327955589886444,3.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q11a,Wellness Studio,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q11b,Wellness (Likelihood),6,2.5,1.224744871391589,2.0,1.5,model×segment,Remote Professional
+GPT-4.1-mini,Q12a,Adventure Basecamp,6,2.5,1.0488088481701516,2.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q12b,Adventure (Likelihood),6,2.5,0.5477225575051661,2.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q13a,Simplicity,6,4.333333333333333,0.5163977794943222,4.0,0.75,model×segment,Remote Professional
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Remote Professional
+GPT-4.1-mini,Q0b,Category Interest,6,3.6666666666666665,1.0327955589886444,4.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q1,Purchase Interest ($23K),6,4.333333333333333,0.816496580927726,4.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q2,Purchase Likelihood (24mo),6,3.0,0.8944271909999159,3.0,1.5,model×segment,Wellness Seeker
+GPT-4.1-mini,Q7,Permit-Light Effect,6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q15,Value: Permit-Light,6,4.0,0.8944271909999159,4.0,1.5,model×segment,Wellness Seeker
+GPT-4.1-mini,Q16,Value: Install Speed,6,3.0,0.8944271909999159,3.0,1.5,model×segment,Wellness Seeker
+GPT-4.1-mini,Q17,Value: Build Quality,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q19,Sponsorship Impact,6,2.6666666666666665,1.2110601416389968,2.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_cost,Cost (~$23K),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_hoa,HOA Restrictions,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_permit,Permit Uncertainty,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_space,Limited Space,6,2.8333333333333335,0.983192080250175,2.5,1.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_financing,Lack of Financing,6,2.0,0.6324555320336759,2.0,0.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_quality,Build Quality Concerns,6,2.6666666666666665,0.816496580927726,2.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q5_resale,Resale Value Uncertainty,6,2.6666666666666665,0.5163977794943222,3.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q9a,Home Office,6,3.1666666666666665,0.40824829046386296,3.0,0.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q9b,Home Office (Likelihood),6,2.5,0.8366600265340756,2.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q10a,Guest Suite / STR,6,2.8333333333333335,1.1690451944500122,3.0,1.5,model×segment,Wellness Seeker
+GPT-4.1-mini,Q10b,Guest Suite (Likelihood),6,3.5,0.5477225575051661,3.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q11a,Wellness Studio,6,4.666666666666667,0.5163977794943223,5.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q11b,Wellness (Likelihood),6,4.333333333333333,0.5163977794943223,4.0,0.75,model×segment,Wellness Seeker
+GPT-4.1-mini,Q12a,Adventure Basecamp,6,2.5,1.224744871391589,2.0,0.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q12b,Adventure (Likelihood),6,2.5,1.0488088481701516,2.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q13a,Simplicity,6,3.5,0.5477225575051661,3.5,1.0,model×segment,Wellness Seeker
+GPT-4.1-mini,Q13b,Simplicity (Likelihood),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q0b,Category Interest,6,2.8333333333333335,0.40824829046386296,3.0,0.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),6,2.6666666666666665,1.0327955589886446,3.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q7,Permit-Light Effect,6,4.0,0.8944271909999159,4.0,1.5,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q15,Value: Permit-Light,6,2.8333333333333335,0.983192080250175,2.5,1.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q16,Value: Install Speed,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q17,Value: Build Quality,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q19,Sponsorship Impact,6,4.166666666666667,0.408248290463863,4.0,0.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,6,3.0,0.6324555320336759,3.0,0.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,6,2.8333333333333335,1.1690451944500122,3.0,1.5,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_space,Limited Space,6,2.5,1.0488088481701516,2.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,6,3.3333333333333335,0.5163977794943222,3.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,6,1.5,0.5477225575051661,1.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q9a,Home Office,6,2.5,0.5477225575051661,2.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,6,2.5,1.378404875209022,2.5,2.5,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),6,1.6666666666666667,0.5163977794943222,2.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q11a,Wellness Studio,6,2.3333333333333335,0.5163977794943222,2.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),6,2.5,0.5477225575051661,2.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,6,4.333333333333333,0.5163977794943222,4.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),6,3.5,0.5477225575051661,3.5,1.0,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q13a,Simplicity,6,3.6666666666666665,0.5163977794943222,4.0,0.75,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),6,2.0,0.8944271909999159,2.0,1.5,model×segment,Active Adventurer
+Gemini-2.5-Flash,Q0b,Category Interest,6,3.0,0.0,3.0,0.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),6,3.0,0.8944271909999159,3.0,1.5,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),6,1.6666666666666667,0.5163977794943222,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q7,Permit-Light Effect,6,3.3333333333333335,1.0327955589886444,3.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q15,Value: Permit-Light,6,3.6666666666666665,1.2110601416389968,3.5,1.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q16,Value: Install Speed,6,3.5,0.5477225575051661,3.5,1.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q17,Value: Build Quality,6,3.0,0.6324555320336759,3.0,0.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q19,Sponsorship Impact,6,2.1666666666666665,1.1690451944500122,2.0,1.5,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),6,4.333333333333333,0.816496580927726,4.5,1.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,6,2.3333333333333335,0.5163977794943222,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_space,Limited Space,6,2.8333333333333335,1.1690451944500122,2.5,1.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,6,3.6666666666666665,0.5163977794943222,4.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,6,2.6666666666666665,0.816496580927726,2.5,1.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q9a,Home Office,6,2.6666666666666665,0.816496580927726,2.5,1.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,6,2.1666666666666665,1.1690451944500122,2.0,1.5,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),6,1.3333333333333333,0.5163977794943223,1.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q11a,Wellness Studio,6,2.3333333333333335,1.0327955589886446,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),6,1.8333333333333333,0.752772652709081,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,6,2.5,0.8366600265340756,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),6,1.6666666666666667,0.5163977794943223,2.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q13a,Simplicity,6,4.166666666666667,0.983192080250175,4.5,1.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),6,3.3333333333333335,1.0327955589886446,3.0,0.75,model×segment,Budget-Conscious DIYer
+Gemini-2.5-Flash,Q0b,Category Interest,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),6,4.333333333333333,0.5163977794943222,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),6,3.0,0.8944271909999159,3.0,1.5,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q7,Permit-Light Effect,6,4.5,0.8366600265340756,5.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q15,Value: Permit-Light,6,4.333333333333333,0.5163977794943223,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q16,Value: Install Speed,6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q17,Value: Build Quality,6,4.333333333333333,0.5163977794943223,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q19,Sponsorship Impact,6,2.0,1.0954451150103321,2.0,2.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),6,1.8333333333333333,0.408248290463863,2.0,0.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,6,3.6666666666666665,1.2110601416389968,3.5,1.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,6,3.6666666666666665,1.0327955589886444,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_space,Limited Space,6,1.5,0.5477225575051661,1.5,1.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,6,1.5,0.5477225575051661,1.5,1.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,6,3.3333333333333335,1.2110601416389968,3.5,1.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,6,2.5,1.0488088481701516,2.5,1.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q9a,Home Office,6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),6,2.3333333333333335,0.816496580927726,2.5,1.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,6,4.166666666666667,0.408248290463863,4.0,0.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),6,4.0,0.6324555320336759,4.0,0.0,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q11a,Wellness Studio,6,2.6666666666666665,1.0327955589886444,3.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),6,1.3333333333333333,0.5163977794943223,1.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,6,1.6666666666666667,0.5163977794943223,2.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),6,1.3333333333333333,0.5163977794943223,1.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q13a,Simplicity,6,3.6666666666666665,1.0327955589886446,4.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Property Maximizer
+Gemini-2.5-Flash,Q0b,Category Interest,6,3.1666666666666665,1.3291601358251257,3.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),6,4.0,0.8944271909999159,4.0,1.5,model×segment,Remote Professional
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q7,Permit-Light Effect,6,3.8333333333333335,0.983192080250175,4.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q15,Value: Permit-Light,6,4.0,0.6324555320336759,4.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q16,Value: Install Speed,6,3.5,1.0488088481701516,3.5,1.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q17,Value: Build Quality,6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q19,Sponsorship Impact,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),6,2.1666666666666665,0.983192080250175,2.5,1.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,6,2.8333333333333335,0.40824829046386296,3.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_space,Limited Space,6,2.0,0.6324555320336759,2.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,6,2.0,0.6324555320336759,2.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,6,2.0,0.8944271909999159,2.0,1.5,model×segment,Remote Professional
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,6,2.3333333333333335,1.0327955589886446,2.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q9a,Home Office,6,4.166666666666667,0.408248290463863,4.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),6,3.3333333333333335,0.816496580927726,3.5,1.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,6,3.0,1.4142135623730951,3.0,1.5,model×segment,Remote Professional
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),6,2.3333333333333335,1.0327955589886446,2.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q11a,Wellness Studio,6,2.5,1.0488088481701516,2.5,1.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),6,2.8333333333333335,1.1690451944500122,3.0,1.5,model×segment,Remote Professional
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,6,2.6666666666666665,0.5163977794943222,3.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),6,2.1666666666666665,0.40824829046386296,2.0,0.0,model×segment,Remote Professional
+Gemini-2.5-Flash,Q13a,Simplicity,6,3.5,0.8366600265340756,4.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Remote Professional
+Gemini-2.5-Flash,Q0b,Category Interest,6,3.0,0.6324555320336759,3.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q1,Purchase Interest ($23K),6,3.8333333333333335,0.752772652709081,4.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q2,Purchase Likelihood (24mo),6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q7,Permit-Light Effect,6,3.6666666666666665,0.816496580927726,3.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q15,Value: Permit-Light,6,3.3333333333333335,0.816496580927726,3.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q16,Value: Install Speed,6,2.8333333333333335,0.408248290463863,3.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q17,Value: Build Quality,6,4.666666666666667,0.5163977794943222,5.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q19,Sponsorship Impact,6,3.0,1.0954451150103321,3.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_cost,Cost (~$23K),6,3.5,0.8366600265340756,4.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_hoa,HOA Restrictions,6,3.1666666666666665,0.752772652709081,3.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_permit,Permit Uncertainty,6,2.6666666666666665,0.816496580927726,2.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_space,Limited Space,6,2.5,0.5477225575051661,2.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_financing,Lack of Financing,6,2.1666666666666665,1.1690451944500122,2.0,1.5,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_quality,Build Quality Concerns,6,2.8333333333333335,0.752772652709081,3.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q5_resale,Resale Value Uncertainty,6,2.5,0.5477225575051661,2.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q9a,Home Office,6,3.8333333333333335,0.9831920802501751,4.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q9b,Home Office (Likelihood),6,3.0,0.6324555320336759,3.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q10a,Guest Suite / STR,6,3.0,0.8944271909999159,3.0,1.5,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q10b,Guest Suite (Likelihood),6,2.5,0.5477225575051661,2.5,1.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q11a,Wellness Studio,6,4.333333333333333,0.5163977794943223,4.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q11b,Wellness (Likelihood),6,4.0,0.6324555320336759,4.0,0.0,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q12a,Adventure Basecamp,6,2.5,0.8366600265340756,2.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q12b,Adventure (Likelihood),6,2.3333333333333335,1.3662601021279464,2.0,2.25,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q13a,Simplicity,6,3.3333333333333335,1.0327955589886446,3.0,0.75,model×segment,Wellness Seeker
+Gemini-2.5-Flash,Q13b,Simplicity (Likelihood),6,3.6666666666666665,0.816496580927726,4.0,0.0,model×segment,Wellness Seeker

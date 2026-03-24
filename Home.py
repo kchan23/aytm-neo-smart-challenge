@@ -18,13 +18,13 @@ TRANSCRIPTS_DATA = PROTO_OUTPUT / "interview_transcripts.csv"
 
 # --- Hero ---
 st.title("🏡 Neo Smart Living")
-st.subheader("Tahoe Mini — Customer Intelligence Platform")
+st.subheader("Tahoe Mini — Synthetic Market Research Platform")
 st.markdown(
     """
-    Neo Smart Living invested in market research to understand SoCal homeowners considering the **Tahoe Mini**
-    — a 117 sq ft prefab backyard structure delivered and installed for **$23,000**.
-    This platform synthesizes that customer data using AI, then lets you **ask questions about your customers**
-    and get validated answers grounded in the research.
+    Traditional market research for the **Tahoe Mini** — a 117 sq ft prefab backyard structure at **$23,000** —
+    would cost **$6,000–$48,000** in surveys and interviews.
+    This platform replaces that fixed cost with **~$2–$4 in API calls**, generating equivalent synthetic customer
+    data and letting you ask questions about your customers on demand.
     """
 )
 
@@ -52,8 +52,8 @@ with cost_col:
         "| 60 survey responses | $12,000–$24,000 | ~$1.50 |\n"
         "| Analysis & reporting | $2,000–$10,000 | ~$0.50 |\n"
         "| **Total** | **$6K–$48K+** | **~$2–$4** |\n\n"
-        "The $6,000 you would pay for real surveys buys the same volume of synthetic data "
-        "for ~$4 — freeing budget to validate only the highest-signal findings.\n\n"
+        "Instead of paying a steep fixed cost for real surveys, you pay only for API calls — "
+        "then validate only the highest-signal findings with real respondents.\n\n"
         "_Synthetic findings are directional hypotheses, not decision-grade evidence._"
     )
 
@@ -213,9 +213,9 @@ with status_col4:
 with status_col5:
     customer_ready = SURVEY_DATA.exists() and INTERVIEW_DATA.exists()
     if customer_ready:
-        st.success("✅ Customer data ready  \nCustomer Intelligence Chat enabled")
+        st.success("✅ Synthetic data ready  \nCustomer Intelligence Chat enabled")
     else:
-        st.warning("⚠️ Customer data incomplete  \nRun prototype scripts to generate data")
+        st.warning("⚠️ Synthetic data missing  \nRun prototype scripts to generate data")
 
 st.divider()
 
