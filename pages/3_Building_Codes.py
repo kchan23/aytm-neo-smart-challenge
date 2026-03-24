@@ -41,8 +41,8 @@ st.set_page_config(
 # Constants
 # ---------------------------------------------------------------------------
 
-DATA_DIR = PROJECT_ROOT / "data" / "building_codes"
-EVAL_DIR = PROJECT_ROOT / "data" / "eval"
+DATA_DIR = APP_DIR / "data" / "building_codes"
+EVAL_DIR = APP_DIR / "data" / "eval"
 DEFAULT_QA_PATH = EVAL_DIR / "sample_qa.json"
 
 
@@ -211,7 +211,7 @@ def _render_exchange(exchange: dict) -> None:
     judge = exchange.get("judge")
     if judge:
         st.divider()
-        st.markdown("##### Judge Synthesis (GPT-4.1)")
+        st.markdown("##### Judge Synthesis (Claude Sonnet)")
         st.markdown(judge.get("synthesis", ""))
 
         severity = exchange.get("severity", "none")

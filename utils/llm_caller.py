@@ -23,7 +23,7 @@ MODELS: dict[str, str] = {
     "google/gemini-2.5-flash": "Gemini-2.5-Flash",
 }
 
-JUDGE_MODEL = "openai/gpt-4.1"
+JUDGE_MODEL = "anthropic/claude-3.5-sonnet"  # stronger reasoning for judge role; see DECISIONS.md
 
 MAX_RETRIES = 3
 

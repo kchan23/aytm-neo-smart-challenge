@@ -40,6 +40,65 @@ col5.metric("Product Price", "$23K", help="Tahoe Mini — delivered, installed, 
 
 st.divider()
 
+# --- Cost & Methodology ---
+cost_col, stamp_col = st.columns([1, 1])
+
+with cost_col:
+    st.info(
+        "**Why synthetic research?**\n\n"
+        "| | Traditional | This Pipeline |\n"
+        "|---|---|---|\n"
+        "| 30 depth interviews | $3,000–$9,000 | ~$0.50 |\n"
+        "| 60 survey responses | $12,000–$24,000 | ~$1.50 |\n"
+        "| Analysis & reporting | $2,000–$10,000 | ~$0.50 |\n"
+        "| **Total** | **$6K–$48K+** | **~$2–$4** |\n\n"
+        "_Synthetic findings are directional hypotheses, not decision-grade evidence._"
+    )
+
+with stamp_col:
+    st.success(
+        "**STAMP Dual-LLM Validation**\n\n"
+        "Every question is answered independently by **GPT-4.1-mini** and **Gemini 2.5 Flash**. "
+        "A **Claude Sonnet** judge then compares the two answers and classifies any disagreement:\n\n"
+        "- **Models agree** → High-confidence finding\n"
+        "- **Minor disagreement** → Emphasis or framing difference\n"
+        "- **Major disagreement** → Potential hallucination or factual conflict — needs validation\n\n"
+        "_Based on Lin (under review) — Structured Taxonomy AI Measurement Protocol._"
+    )
+
+st.divider()
+
+# --- Pipeline Flow ---
+st.subheader("How the Pipeline Works")
+p1, p2, p3 = st.columns(3)
+
+with p1:
+    st.markdown(
+        "**Stage 2 → Qualitative**\n\n"
+        "30 synthetic depth interviews with SoCal homeowner personas probe backyard needs, "
+        "unmet wants, and emotional reactions to the Tahoe Mini. "
+        "LDA topic modeling + emotion classification surface emergent themes and segments."
+    )
+
+with p2:
+    st.markdown(
+        "**Stage 4 → Quantitative**\n\n"
+        "Interview-derived segments inform 5 psychographic profiles. "
+        "60 synthetic respondents complete a 35-item survey. "
+        "Mann-Whitney U tests flag variables where GPT and Gemini diverge — "
+        "those findings need real-world validation."
+    )
+
+with p3:
+    st.markdown(
+        "**Extension → Building Codes**\n\n"
+        "A RAG chatbot answers permit and zoning questions using uploaded building code documents. "
+        "GPT-4.1-mini and Gemini answer independently; Claude Sonnet synthesizes and classifies "
+        "disagreements. Evaluation mode scores accuracy against a ground-truth Q&A set."
+    )
+
+st.divider()
+
 # --- Navigation Cards ---
 st.subheader("Explore the Research")
 
@@ -118,7 +177,7 @@ with status_col3:
         st.warning(f"⚠️ No themes data  \nRun `python prototype/interview_analysis.py` for thematic analysis")
 
 with status_col4:
-    bc_dir = Path(__file__).parent.parent / "data" / "building_codes"
+    bc_dir = Path(__file__).parent / "data" / "building_codes"
     bc_docs = (
         list(bc_dir.glob("*.pdf")) + list(bc_dir.glob("*.txt")) + list(bc_dir.glob("*.md"))
         if bc_dir.exists() else []
