@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cq001",
+    "question": "Which customer segment shows the highest purchase interest in the Tahoe Mini?",
+    "ground_truth": "Property Maximizer shows the highest purchase interest with a mean Q1 score of 4.25, followed by Remote Professional at 4.17 and Wellness Seeker at 4.08. Active Adventurer and Budget-Conscious DIYer show lower interest at 3.17 and 2.92 respectively.",
+    "topic": "purchase_intent",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cq002",
+    "question": "What is the biggest barrier to purchasing the Tahoe Mini?",
+    "ground_truth": "HOA restrictions and total cost (~$23,000) are the two most commonly cited barriers. HOA restrictions appear frequently across segments 2, 4, and 5, while cost is the primary concern for segments 1 and 3. Permit uncertainty is also a notable barrier, particularly for Remote Professionals.",
+    "topic": "barriers",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cq003",
+    "question": "Which positioning concept resonates most strongly with customers?",
+    "ground_truth": "Concept 1 (Backyard Home Office) is the most preferred concept overall, selected by approximately 25-30% of respondents in Q14. It scores highest in both appeal and purchase likelihood for Remote Professionals and Wellness Seekers. Concept 2 (Guest Suite/STR Income) resonates most with Property Maximizers.",
+    "topic": "concept_test",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cq004",
+    "question": "How does the permit-light sizing feature affect purchase likelihood?",
+    "ground_truth": "Permit-light sizing has a strong positive effect on purchase likelihood (Q7 mean ~4.0 across segments). Remote Professionals and Property Maximizers show the strongest positive response. This feature directly addresses one of the top stated barriers — permit uncertainty — and is consistently cited as a key purchase driver.",
+    "topic": "value_drivers",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cq005",
+    "question": "What do Remote Professionals primarily want to use the Tahoe Mini for?",
+    "ground_truth": "Remote Professionals overwhelmingly want a dedicated home office workspace. Interview responses describe frustration with makeshift workspaces at kitchen counters or dining tables, noise from family members, and the inability to separate work from home life. The physical separation of walking to a separate structure is described as 'life-changing' by multiple respondents.",
+    "topic": "segment_use_case",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cq006",
+    "question": "What are Property Maximizers' main objections to the Tahoe Mini?",
+    "ground_truth": "Property Maximizers' primary concerns are build quality and durability (they want something that adds property value, not depreciates it), HOA restrictions that may prevent installation, and uncertainty about resale value impact. They are interested in the guest suite and STR income potential but need assurance that the unit will appreciate or at least hold value.",
+    "topic": "segment_objections",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cq007",
+    "question": "How price-sensitive are Budget-Conscious DIYers compared to other segments?",
+    "ground_truth": "Budget-Conscious DIYers show the lowest purchase interest (Q1 mean 2.92) and the highest cost barrier rating among segments. They are attracted to the practical storage and workshop use case but the $23,000 price point is a significant hurdle. Financing options rank as a key barrier for this segment. They respond better to value-for-money messaging than premium positioning.",
+    "topic": "pricing_sensitivity",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cq008",
+    "question": "Which outreach channels should Neo Smart Living prioritize to reach potential buyers?",
+    "ground_truth": "Google/Search ads and social media (Facebook/Instagram) are the top two outreach channels cited. Word of mouth from existing owners is highly trusted, particularly for Remote Professionals. Active Adventurers are best reached through outdoor event sponsorships and trail/cycling community channels. Real estate and home improvement expos are effective for Property Maximizers.",
+    "topic": "marketing_channels",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cq009",
+    "question": "How does remote work arrangement correlate with purchase interest?",
+    "ground_truth": "Full-time remote workers show the strongest purchase interest and purchase likelihood. Hybrid workers are the second strongest group. On-site workers show lower purchase intent except when motivated by hobby/storage use cases (Active Adventurers) or investment potential (Property Maximizers). Self-employed individuals show high interest due to the home office and client meeting space use case.",
+    "topic": "demographics_correlation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cq010",
+    "question": "What emotional response does the Tahoe Mini product concept evoke in interviews?",
+    "ground_truth": "Excitement is the dominant primary emotion across interview responses, particularly in IQ6 (Product Reaction) and IQ4 (Lifestyle Fantasy). This is consistently paired with a secondary emotion of frustration — respondents are frustrated with their current situation (lack of space, no work-life separation) and excited by the solution the Tahoe Mini offers. Skepticism appears in IQ7 responses around price, HOA, and quality.",
+    "topic": "emotional_response",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cq011",
+    "question": "Do GPT-4.1-mini and Gemini 2.5 Flash agree on which segment to prioritize?",
+    "ground_truth": "Both models converge on Remote Professional as the primary target segment based on high purchase intent (Q1 ~4.17), the dominant home office use case (Q3 ~25% of all respondents), and the strongest emotional resonance in interviews. Property Maximizer is the secondary target due to the highest Q1 score (4.25) but smaller addressable market. The models show minor differences in emphasis but no factual disagreements.",
+    "topic": "model_agreement",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cq012",
+    "question": "What messaging changes would most improve purchase conversion among hesitant buyers?",
+    "ground_truth": "Three messaging interventions show the strongest potential: (1) Leading with permit-light sizing to de-risk the permit concern — Q7 shows high positive impact across all segments; (2) Addressing total cost with financing options messaging, particularly for Budget-Conscious DIYers; (3) Using customer testimonials or demos to overcome quality/durability skepticism for Property Maximizers. The one-day installation benefit resonates broadly as a friction reducer.",
+    "topic": "conversion_optimization",
+    "difficulty": "hard"
+  }
+]

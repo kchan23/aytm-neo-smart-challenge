@@ -1,22 +1,21 @@
-"""Building Codes Assistant — STAMP-validated RAG chatbot."""
+"""Customer Intelligence Chat — STAMP-validated Q&A over synthetic customer data."""
 
 import sys
 import json
-import io
 from datetime import datetime
 from pathlib import Path
 
+import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
-import pandas as pd
 
-# --- Path setup so app/utils is importable ---
+# --- Path setup ---
 APP_DIR = Path(__file__).parent.parent.resolve()
 PROJECT_ROOT = APP_DIR.parent.resolve()
 if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
-from utils.rag_pipeline import BuildingCodeRetriever, get_retriever
+from utils.customer_retriever import CustomerDataRetriever, get_customer_retriever
 from utils.llm_caller import load_api_key, call_dual_llm_parallel
 from utils.judge import call_judge, classify_disagreement_severity
 from utils.rag_evaluator import (
@@ -31,8 +30,8 @@ from utils.rag_evaluator import (
 # ---------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Building Codes Assistant",
-    page_icon="🏗️",
+    page_title="Customer Intelligence",
+    page_icon="💡",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -41,18 +40,26 @@ st.set_page_config(
 # Constants
 # ---------------------------------------------------------------------------
 
-DATA_DIR = APP_DIR / "data" / "building_codes"
+DATA_DIR = PROJECT_ROOT / "prototype" / "output"
 EVAL_DIR = APP_DIR / "data" / "eval"
-DEFAULT_QA_PATH = EVAL_DIR / "sample_qa.json"
+DEFAULT_QA_PATH = EVAL_DIR / "customer_qa.json"
 
+STARTER_QUESTIONS = [
+    "Which customer segment should Neo Smart Living target first?",
+    "What is the biggest barrier to purchasing the Tahoe Mini?",
+    "Which positioning concept resonates most strongly?",
+    "How does the permit-light feature affect purchase likelihood?",
+    "What do Remote Professionals say about work-life boundaries?",
+    "What are Property Maximizers' main objections?",
+]
 
 # ---------------------------------------------------------------------------
 # Cached resources
 # ---------------------------------------------------------------------------
 
-@st.cache_resource(show_spinner="Loading building code documents…")
-def _build_retriever(method: str) -> BuildingCodeRetriever:
-    return get_retriever(DATA_DIR, method=method)
+@st.cache_resource(show_spinner="Building customer data index…")
+def _build_retriever() -> CustomerDataRetriever:
+    return get_customer_retriever(DATA_DIR)
 
 
 # ---------------------------------------------------------------------------
@@ -60,10 +67,9 @@ def _build_retriever(method: str) -> BuildingCodeRetriever:
 # ---------------------------------------------------------------------------
 
 def render_sidebar() -> dict:
-    """Render sidebar controls and return config dict."""
     st.sidebar.title("⚙️ Settings")
 
-    # API key status
+    # API key
     st.sidebar.subheader("API Key")
     try:
         api_key = load_api_key(PROJECT_ROOT)
@@ -77,79 +83,86 @@ def render_sidebar() -> dict:
 
     # Retrieval settings
     st.sidebar.subheader("Retrieval")
-    method = st.sidebar.radio(
-        "Method",
-        options=["tfidf", "embedding"],
-        format_func=lambda x: "TF-IDF (fast)" if x == "tfidf" else "Embeddings (semantic)",
-        help="TF-IDF works immediately. Embeddings require sentence-transformers (~700 MB).",
-    )
-    top_k = st.sidebar.slider("Top-K chunks", min_value=2, max_value=10, value=5)
+    top_k = st.sidebar.slider("Top-K chunks", min_value=3, max_value=12, value=6,
+                               help="Number of data chunks passed as context to each LLM")
     use_judge = st.sidebar.toggle("Use judge LLM", value=True,
                                    help="Disable to reduce API cost (shows raw answers only)")
 
     st.sidebar.divider()
 
-    # Document status
-    st.sidebar.subheader("Documents")
-    docs = list(DATA_DIR.glob("*.pdf")) + list(DATA_DIR.glob("*.txt")) + list(DATA_DIR.glob("*.md"))
-    if docs:
-        st.sidebar.success(f"✅ {len(docs)} document(s) loaded")
-        for doc in docs:
-            size_kb = doc.stat().st_size / 1024
-            st.sidebar.caption(f"📄 {doc.name} ({size_kb:.1f} KB)")
-    else:
-        st.sidebar.warning("⚠️ No documents found")
-        st.sidebar.caption(f"Add PDFs or text files to:\n`data/building_codes/`")
+    # Data status
+    st.sidebar.subheader("Data Sources")
+    interview_path = DATA_DIR / "interview_analysis.csv"
+    survey_path = DATA_DIR / "synthetic_responses.csv"
+    themes_path = DATA_DIR / "interview_themes.json"
+
+    for label, path in [
+        ("Interviews (30)", interview_path),
+        ("Survey (60)", survey_path),
+        ("Themes", themes_path),
+    ]:
+        if path.exists():
+            st.sidebar.success(f"✅ {label}")
+        else:
+            st.sidebar.error(f"❌ {label} missing")
 
     st.sidebar.divider()
 
-    # Clear chat
     if st.sidebar.button("🗑️ Clear chat history", use_container_width=True):
         st.session_state.chat_history = []
         st.rerun()
 
-    return {
-        "api_key": api_key,
-        "method": method,
-        "top_k": top_k,
-        "use_judge": use_judge,
-    }
+    return {"api_key": api_key, "top_k": top_k, "use_judge": use_judge}
 
 
 # ---------------------------------------------------------------------------
 # Chat tab
 # ---------------------------------------------------------------------------
 
-def render_chat_tab(config: dict, retriever: BuildingCodeRetriever) -> None:
-    st.header("Ask a Building Code Question")
+def render_chat_tab(config: dict, retriever: CustomerDataRetriever) -> None:
+    st.header("Ask Your Customer Data")
+    st.caption(
+        f"Index: {retriever.source_summary} · "
+        "Answers are grounded in synthetic interview quotes and survey statistics."
+    )
 
     if retriever.is_empty:
         st.warning(
-            "No building code documents are loaded. "
-            "Add PDFs or text files to `data/building_codes/` and refresh the page."
+            "No customer data found. Ensure `prototype/output/` contains "
+            "`interview_analysis.csv`, `synthetic_responses.csv`, and `interview_themes.json`."
         )
 
-    # Display chat history
+    # Chat history
     history = st.session_state.get("chat_history", [])
     for exchange in history:
         _render_exchange(exchange)
 
-    # Input
+    # Starter question chips
+    if not history:
+        st.markdown("**Suggested questions:**")
+        cols = st.columns(3)
+        for i, q in enumerate(STARTER_QUESTIONS):
+            if cols[i % 3].button(q, key=f"starter_{i}", use_container_width=True):
+                st.session_state["_pending_question"] = q
+                st.rerun()
+
+    # Handle starter button click
+    pending = st.session_state.pop("_pending_question", None)
+
+    # Chat input
     question = st.chat_input(
-        "Ask about setbacks, permits, height limits, electrical requirements…",
+        "Ask anything about your customers…",
         disabled=config["api_key"] is None or retriever.is_empty,
-    )
+    ) or pending
 
     if question:
-        with st.spinner("Retrieving context and querying models… (8–15 seconds)"):
+        with st.spinner("Retrieving customer data and querying models… (8–15 seconds)"):
             exchange = _run_pipeline(question, config, retriever)
-
         st.session_state.setdefault("chat_history", []).append(exchange)
         st.rerun()
 
 
-def _run_pipeline(question: str, config: dict, retriever: BuildingCodeRetriever) -> dict:
-    """Run retrieve → dual LLM → judge and return exchange dict."""
+def _run_pipeline(question: str, config: dict, retriever: CustomerDataRetriever) -> dict:
     api_key = config["api_key"]
     top_k = config["top_k"]
     use_judge = config["use_judge"]
@@ -158,11 +171,14 @@ def _run_pipeline(question: str, config: dict, retriever: BuildingCodeRetriever)
     context = retriever.format_context(chunks)
 
     system_prompt = (
-        "You are a building code expert. Answer based ONLY on the provided context. "
-        "If the context does not contain enough information to answer fully, say so explicitly. "
-        "Be concise and cite specific sections or requirements when available."
+        "You are a market research analyst for Neo Smart Living. "
+        "Answer based ONLY on the provided synthetic customer data context. "
+        "The data comes from 30 depth interviews and 60 survey responses with SoCal homeowners "
+        "considering the Tahoe Mini — a 117 sq ft prefab backyard structure at $23,000. "
+        "If the context does not contain enough information to answer, say so explicitly. "
+        "Be specific: cite segment names, percentages, or direct quotes when available."
     )
-    user_prompt = f"Context:\n{context}\n\nQuestion: {question}\n\nAnswer:"
+    user_prompt = f"Customer Data Context:\n{context}\n\nQuestion: {question}\n\nAnswer:"
 
     llm_answers = call_dual_llm_parallel(api_key, system_prompt, user_prompt, temperature=0.2)
     answer_gpt = llm_answers.get("GPT-4.1-mini", "No response")
@@ -187,7 +203,6 @@ def _run_pipeline(question: str, config: dict, retriever: BuildingCodeRetriever)
 
 
 def _render_exchange(exchange: dict) -> None:
-    """Render a single Q&A exchange in the chat."""
     st.markdown(f"**Your question** _{exchange['timestamp']}_")
     st.info(exchange["question"])
 
@@ -228,9 +243,9 @@ def _render_exchange(exchange: dict) -> None:
 
         col_exp1, col_exp2 = st.columns(2)
         with col_exp1:
-            with st.expander("Retrieved context chunks"):
+            with st.expander("Retrieved customer data chunks"):
                 for chunk in exchange.get("chunks", []):
-                    st.caption(f"[{chunk['source']}, chunk {chunk['chunk_index']}]")
+                    st.caption(f"[{chunk['source']} | chunk {chunk['chunk_index']}]")
                     st.text(chunk["text"][:400] + ("…" if len(chunk["text"]) > 400 else ""))
         with col_exp2:
             with st.expander("Judge details (JSON)"):
@@ -243,38 +258,34 @@ def _render_exchange(exchange: dict) -> None:
 # Evaluation tab
 # ---------------------------------------------------------------------------
 
-def render_eval_tab(config: dict, retriever: BuildingCodeRetriever) -> None:
+def render_eval_tab(config: dict, retriever: CustomerDataRetriever) -> None:
     st.header("Batch Accuracy Evaluation")
     st.markdown(
         "Run the full pipeline on a ground-truth Q&A set to measure accuracy "
-        "and surface disagreement patterns."
+        "and surface disagreement patterns using the **STAMP methodology**."
     )
-
-    if retriever.is_empty:
-        st.warning("No building code documents loaded — retrieval will return empty context.")
 
     if config["api_key"] is None:
         st.error("API key required to run evaluation.")
         return
 
-    # Q&A file source
     qa_source = st.radio(
         "Q&A source",
-        ["Use default sample_qa.json", "Upload my own"],
+        ["Use default customer_qa.json", "Upload my own"],
         horizontal=True,
     )
 
     qa_path = None
-    if qa_source == "Use default sample_qa.json":
+    if qa_source == "Use default customer_qa.json":
         if DEFAULT_QA_PATH.exists():
             st.success(f"✅ Using `{DEFAULT_QA_PATH.name}` ({_count_qa(DEFAULT_QA_PATH)} questions)")
             qa_path = DEFAULT_QA_PATH
         else:
             st.error(f"Default Q&A file not found at `{DEFAULT_QA_PATH}`")
     else:
-        uploaded = st.file_uploader("Upload sample_qa.json", type=["json"])
+        uploaded = st.file_uploader("Upload customer_qa.json", type=["json"])
         if uploaded:
-            tmp_path = EVAL_DIR / "uploaded_qa.json"
+            tmp_path = EVAL_DIR / "uploaded_customer_qa.json"
             tmp_path.write_bytes(uploaded.read())
             qa_path = tmp_path
             st.success(f"✅ Uploaded ({_count_qa(qa_path)} questions)")
@@ -282,15 +293,11 @@ def render_eval_tab(config: dict, retriever: BuildingCodeRetriever) -> None:
     if qa_path is None:
         return
 
-    # Run evaluation
     col_run, col_info = st.columns([1, 3])
     with col_run:
         run_btn = st.button("▶ Run Evaluation", type="primary", use_container_width=True)
     with col_info:
-        st.caption(
-            "Each question makes 3 API calls (2 LLMs + 1 judge). "
-            "12 questions ≈ 2–3 minutes."
-        )
+        st.caption("Each question makes 3 API calls (2 LLMs + 1 judge). 12 questions ≈ 2–3 minutes.")
 
     if run_btn:
         progress_bar = st.progress(0, text="Starting evaluation…")
@@ -309,12 +316,11 @@ def render_eval_tab(config: dict, retriever: BuildingCodeRetriever) -> None:
         )
         progress_bar.progress(1.0, text="Complete!")
         status_text.empty()
-        st.session_state["eval_results"] = results
+        st.session_state["customer_eval_results"] = results
         st.rerun()
 
-    # Display results
-    if "eval_results" in st.session_state:
-        _render_eval_results(st.session_state["eval_results"])
+    if "customer_eval_results" in st.session_state:
+        _render_eval_results(st.session_state["customer_eval_results"])
 
 
 def _count_qa(path: Path) -> int:
@@ -325,7 +331,6 @@ def _count_qa(path: Path) -> int:
 
 
 def _render_eval_results(results) -> None:
-    """Render metrics, charts, and table for evaluation results."""
     report = build_disagreement_report(results)
     if not results:
         st.warning("No results to display.")
@@ -337,38 +342,22 @@ def _render_eval_results(results) -> None:
               help="Average ROUGE-1 F1 of judge synthesis vs. ground truth")
     c2.metric("GPT-4.1-mini ROUGE-1", f"{report.get('avg_gpt_rouge1', 0):.3f}")
     c3.metric("Gemini ROUGE-1", f"{report.get('avg_gemini_rouge1', 0):.3f}")
-    c4.metric("Disagreement Rate", f"{report.get('disagreement_rate', 0):.0%}",
-              help="% of questions where models disagreed")
-    c5.metric("Hallucination Rate", f"{report.get('hallucination_rate', 0):.0%}",
-              help="% of questions classified as hallucination")
+    c4.metric("Disagreement Rate", f"{report.get('disagreement_rate', 0):.0%}")
+    c5.metric("Hallucination Rate", f"{report.get('hallucination_rate', 0):.0%}")
 
     # STAMP inter-rater reliability
     st.subheader("STAMP Inter-Rater Reliability")
     s1, s2, s3, s4 = st.columns(4)
     alpha_val = report.get("krippendorff_alpha", "N/A")
-    s1.metric(
-        "Krippendorff's α",
-        alpha_val,
-        help="Inter-rater reliability between GPT-4.1-mini and Gemini on binary adequacy coding. "
-             "α ≥ .80 = high; α ≥ .67 = acceptable; α < .67 = unreliable (refine prompt).",
-    )
-    s2.metric(
-        "STAMP Reliability",
-        report.get("stamp_reliability_tier", "N/A"),
-        help="Tier based on Krippendorff's α per Lin (under review)",
-    )
+    s1.metric("Krippendorff's α", alpha_val,
+              help="α ≥ .80 = high; α ≥ .67 = acceptable; α < .67 = refine prompt")
+    s2.metric("STAMP Reliability", report.get("stamp_reliability_tier", "N/A"))
     gpt_adeq = report.get("gpt_adequacy_rate", "N/A")
     gem_adeq = report.get("gemini_adequacy_rate", "N/A")
-    s3.metric(
-        "GPT-4.1-mini Adequacy",
-        f"{gpt_adeq:.0%}" if isinstance(gpt_adeq, float) else gpt_adeq,
-        help="% of answers judged adequate by Claude Sonnet",
-    )
-    s4.metric(
-        "Gemini Adequacy",
-        f"{gem_adeq:.0%}" if isinstance(gem_adeq, float) else gem_adeq,
-        help="% of answers judged adequate by Claude Sonnet",
-    )
+    s3.metric("GPT-4.1-mini Adequacy",
+              f"{gpt_adeq:.0%}" if isinstance(gpt_adeq, float) else gpt_adeq)
+    s4.metric("Gemini Adequacy",
+              f"{gem_adeq:.0%}" if isinstance(gem_adeq, float) else gem_adeq)
 
     st.divider()
 
@@ -381,7 +370,12 @@ def _render_eval_results(results) -> None:
             fig, ax = plt.subplots(figsize=(5, 3))
             labels = list(type_counts.keys())
             values = list(type_counts.values())
-            colors = ["#2ecc71" if l == "agreement" else "#e67e22" if l in ("hallucination", "factual_conflict") else "#3498db" for l in labels]
+            colors = [
+                "#2ecc71" if l == "agreement"
+                else "#e67e22" if l in ("hallucination", "factual_conflict")
+                else "#3498db"
+                for l in labels
+            ]
             ax.barh(labels, values, color=colors)
             ax.set_xlabel("Count")
             ax.set_title("Disagreement Type Distribution")
@@ -394,38 +388,31 @@ def _render_eval_results(results) -> None:
         for suggestion in report.get("prompt_engineering_suggestions", []):
             st.info(suggestion)
 
-    # Most contested
     contested = report.get("most_contested_questions", [])
     if contested:
         st.subheader("Most Contested Questions")
-        st.dataframe(
-            pd.DataFrame(contested),
-            use_container_width=True,
-            hide_index=True,
-        )
+        st.dataframe(pd.DataFrame(contested), use_container_width=True, hide_index=True)
 
     st.divider()
 
-    # Full results table
     st.subheader("Full Results")
     df = results_to_dataframe(results)
     display_cols = [
         "question_id", "topic", "difficulty", "disagreement_type",
         "disagreement_severity", "answer_a_adequate", "answer_b_adequate",
-        "gpt_rouge1", "gemini_rouge1", "synthesis_rouge1", "error"
+        "gpt_rouge1", "gemini_rouge1", "synthesis_rouge1", "error",
     ]
-    st.dataframe(df[[c for c in display_cols if c in df.columns]], use_container_width=True, hide_index=True)
+    st.dataframe(df[[c for c in display_cols if c in df.columns]],
+                 use_container_width=True, hide_index=True)
 
-    # Downloads
     col_dl1, col_dl2 = st.columns(2)
     with col_dl1:
         csv_bytes = df.to_csv(index=False).encode("utf-8")
-        st.download_button("⬇ Download results CSV", csv_bytes, "eval_results.csv", "text/csv")
+        st.download_button("⬇ Download results CSV", csv_bytes, "customer_eval_results.csv", "text/csv")
     with col_dl2:
         report_json = json.dumps(report, indent=2).encode("utf-8")
-        st.download_button("⬇ Download report JSON", report_json, "disagreement_report.json", "application/json")
+        st.download_button("⬇ Download report JSON", report_json, "customer_disagreement_report.json", "application/json")
 
-    # Full report expander
     with st.expander("Full disagreement report (JSON)"):
         st.json(report)
 
@@ -435,18 +422,18 @@ def _render_eval_results(results) -> None:
 # ---------------------------------------------------------------------------
 
 def main():
-    st.title("🏗️ Building Codes Assistant")
+    st.title("💡 Customer Intelligence Chat")
     st.markdown(
-        "Ask questions about building codes and permit requirements. "
-        "Answers are independently generated by two LLMs and synthesized by a judge "
-        "following the **STAMP methodology**."
+        "Ask questions about your customers — answered independently by two LLMs, "
+        "synthesized by a judge, and validated using the **STAMP methodology**. "
+        "Answers are grounded in 30 synthetic depth interviews and 60 survey responses."
     )
     st.divider()
 
     config = render_sidebar()
-    retriever = _build_retriever(config["method"])
+    retriever = _build_retriever()
 
-    tab_chat, tab_eval = st.tabs(["💬 Chat", "📊 Evaluation Mode"])
+    tab_chat, tab_eval = st.tabs(["💬 Ask Your Data", "📊 Evaluation Mode"])
 
     with tab_chat:
         render_chat_tab(config, retriever)

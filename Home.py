@@ -18,13 +18,13 @@ TRANSCRIPTS_DATA = PROTO_OUTPUT / "interview_transcripts.csv"
 
 # --- Hero ---
 st.title("🏡 Neo Smart Living")
-st.subheader("Tahoe Mini — Synthetic Market Research Dashboard")
+st.subheader("Tahoe Mini — Customer Intelligence Platform")
 st.markdown(
     """
-    This dashboard presents AI-generated synthetic market research for the **Tahoe Mini**,
-    a 117 sq ft backyard prefabricated unit delivered and installed for **$23,000**.
-    Two LLMs (**GPT-4.1-mini** and **Gemini 2.5-Flash**) simulate 30 qualitative interviews
-    and 60 survey respondents across 5 SoCal homeowner segments.
+    Neo Smart Living invested in market research to understand SoCal homeowners considering the **Tahoe Mini**
+    — a 117 sq ft prefab backyard structure delivered and installed for **$23,000**.
+    This platform synthesizes that customer data using AI, then lets you **ask questions about your customers**
+    and get validated answers grounded in the research.
     """
 )
 
@@ -45,13 +45,15 @@ cost_col, stamp_col = st.columns([1, 1])
 
 with cost_col:
     st.info(
-        "**Why synthetic research?**\n\n"
+        "**Traditional vs. synthetic research cost**\n\n"
         "| | Traditional | This Pipeline |\n"
         "|---|---|---|\n"
         "| 30 depth interviews | $3,000–$9,000 | ~$0.50 |\n"
         "| 60 survey responses | $12,000–$24,000 | ~$1.50 |\n"
         "| Analysis & reporting | $2,000–$10,000 | ~$0.50 |\n"
         "| **Total** | **$6K–$48K+** | **~$2–$4** |\n\n"
+        "The $6,000 you would pay for real surveys buys the same volume of synthetic data "
+        "for ~$4 — freeing budget to validate only the highest-signal findings.\n\n"
         "_Synthetic findings are directional hypotheses, not decision-grade evidence._"
     )
 
@@ -69,12 +71,12 @@ with stamp_col:
 st.divider()
 
 # --- Pipeline Flow ---
-st.subheader("How the Pipeline Works")
-p1, p2, p3 = st.columns(3)
+st.subheader("How the Platform Works")
+p1, p2, p3, p4 = st.columns(4)
 
 with p1:
     st.markdown(
-        "**Stage 2 → Qualitative**\n\n"
+        "**1 → Qualitative**\n\n"
         "30 synthetic depth interviews with SoCal homeowner personas probe backyard needs, "
         "unmet wants, and emotional reactions to the Tahoe Mini. "
         "LDA topic modeling + emotion classification surface emergent themes and segments."
@@ -82,19 +84,26 @@ with p1:
 
 with p2:
     st.markdown(
-        "**Stage 4 → Quantitative**\n\n"
+        "**2 → Quantitative**\n\n"
         "Interview-derived segments inform 5 psychographic profiles. "
         "60 synthetic respondents complete a 35-item survey. "
-        "Mann-Whitney U tests flag variables where GPT and Gemini diverge — "
-        "those findings need real-world validation."
+        "Mann-Whitney U tests flag variables where GPT and Gemini diverge."
     )
 
 with p3:
     st.markdown(
-        "**Extension → Building Codes**\n\n"
+        "**3 → Building Codes**\n\n"
         "A RAG chatbot answers permit and zoning questions using uploaded building code documents. "
         "GPT-4.1-mini and Gemini answer independently; Claude Sonnet synthesizes and classifies "
-        "disagreements. Evaluation mode scores accuracy against a ground-truth Q&A set."
+        "disagreements using STAMP."
+    )
+
+with p4:
+    st.markdown(
+        "**4 → Customer Intelligence**\n\n"
+        "Ask any question about your customers. Two LLMs retrieve and analyze the synthetic data "
+        "independently; a judge synthesizes the answer and scores inter-rater reliability "
+        "(Krippendorff's α) so you know how much to trust the finding."
     )
 
 st.divider()
@@ -102,7 +111,7 @@ st.divider()
 # --- Navigation Cards ---
 st.subheader("Explore the Research")
 
-card1, card2, card3 = st.columns(3)
+card1, card2, card3, card4 = st.columns(4)
 
 with card1:
     st.markdown("### 🎤 Qualitative Interview Insights")
@@ -142,18 +151,32 @@ with card3:
 
         - **RAG-powered** — answers grounded in uploaded building code documents
         - **Dual-LLM validation** — GPT-4.1-mini and Gemini 2.5 Flash answer independently
-        - **Judge synthesis** — GPT-4.1 compares, synthesizes, and flags disagreements
+        - **Judge synthesis** — Claude Sonnet compares, synthesizes, and flags disagreements
         - **Evaluation mode** — batch accuracy scoring against ground truth Q&A
         """
     )
     st.page_link("pages/3_Building_Codes.py", label="Open Building Codes Assistant →", icon="🏗️")
+
+with card4:
+    st.markdown("### 💡 Customer Intelligence Chat")
+    st.markdown(
+        """
+        Ask anything about your customers — get STAMP-validated answers.
+
+        - **Ask your data** — freeform questions over synthetic interviews + surveys
+        - **Dual-LLM answers** — GPT-4.1-mini and Gemini answer independently
+        - **Judge synthesis** — Claude Sonnet synthesizes and classifies disagreements
+        - **Reliability score** — Krippendorff's α tells you how much to trust the finding
+        """
+    )
+    st.page_link("pages/4_Customer_Insights.py", label="Open Customer Intelligence →", icon="💡")
 
 st.divider()
 
 # --- Data Status ---
 st.subheader("Data Status")
 
-status_col1, status_col2, status_col3, status_col4 = st.columns(4)
+status_col1, status_col2, status_col3, status_col4, status_col5 = st.columns(5)
 
 with status_col1:
     if SURVEY_DATA.exists():
@@ -186,6 +209,13 @@ with status_col4:
         st.success(f"✅ {len(bc_docs)} building code doc(s)  \nReady for RAG chatbot")
     else:
         st.warning(f"⚠️ No building codes docs  \nAdd PDFs/text to `data/building_codes/`")
+
+with status_col5:
+    customer_ready = SURVEY_DATA.exists() and INTERVIEW_DATA.exists()
+    if customer_ready:
+        st.success("✅ Customer data ready  \nCustomer Intelligence Chat enabled")
+    else:
+        st.warning("⚠️ Customer data incomplete  \nRun prototype scripts to generate data")
 
 st.divider()
 

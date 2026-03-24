@@ -55,25 +55,33 @@ ANSWER A (GPT-4.1-mini):
 ANSWER B (Gemini-2.5-Flash):
 {answer_b}
 
-Analyze the two answers and return a JSON object with exactly these keys:
+Following the STAMP methodology (Lin, under review), analyze both answers as independent coders
+and return a JSON object with exactly these keys:
 
 {{
   "agreements": ["<point they agree on>", ...],
   "disagreements": ["<specific point of disagreement>", ...],
   "disagreement_type": "<one of: agreement | ambiguous_source | hallucination | missing_context | factual_conflict | emphasis_difference>",
-  "disagreement_explanation": "<1-2 sentence explanation of WHY they disagree, or empty string if agreement>",
+  "disagreement_explanation": "<1-2 sentence explanation of WHY they disagree — is it ambiguous source text, a model-specific blind spot, or a hallucination? Or empty string if agreement>",
   "synthesis": "<your authoritative answer grounded only in the provided context>",
   "confidence": "<high | medium | low>",
-  "citations": ["<source filename and chunk index referenced>", ...]
+  "citations": ["<source filename and chunk index referenced>", ...],
+  "answer_a_adequate": <1 if Answer A correctly addresses the question based on context, 0 if not>,
+  "answer_b_adequate": <1 if Answer B correctly addresses the question based on context, 0 if not>
 }}
 
-IMPORTANT:
+STAMP GUIDELINES:
 - "agreements" and "disagreements" should be concise bullet-point strings.
 - "disagreement_type" must be exactly one of the listed values.
-- "synthesis" should be a complete, readable answer a user would find helpful.
-- "confidence" = high if context clearly supports a complete answer;
-                 medium if partial or somewhat ambiguous;
-                 low if context is insufficient or models both appear to hallucinate.
+- "synthesis" should be a complete, readable answer grounded ONLY in the provided context.
+- "confidence" = high if context clearly supports a complete answer (both models adequately answered);
+                 medium if partial, one model missed something, or context is somewhat ambiguous;
+                 low if context is insufficient or one/both models appear to hallucinate.
+- "answer_a_adequate" and "answer_b_adequate" are binary (0 or 1): does the answer correctly
+  address the question based on the retrieved context? Used to compute Krippendorff's alpha.
+- Inter-model disagreement is a DIAGNOSTIC SIGNAL, not noise. Your disagreement_explanation
+  should identify whether divergence stems from: unclear source text, model-specific biases,
+  or genuinely ambiguous requirements — so the prompt can be refined accordingly.
 """
 
 

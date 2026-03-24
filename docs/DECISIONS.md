@@ -110,6 +110,20 @@ Each entry explains a key decision, why it was made, and any trade-offs. Update 
 
 ---
 
+## [2026-03-23] STAMP methodology alignment in evaluator
+
+**Decision**: The RAG evaluator follows the STAMP (Structured Taxonomy AI Measurement Protocol) methodology from Lin (under review, Journal of Marketing).
+
+**Key choices:**
+1. **Binary adequacy coding** — the judge (Claude Sonnet) assigns `answer_a_adequate` (0/1) and `answer_b_adequate` (0/1) per question, treating GPT-4.1-mini and Gemini as two independent coders.
+2. **Krippendorff's alpha** — computed in `rag_evaluator.krippendorff_alpha()` from the binary adequacy pairs. Thresholds: α ≥ .80 = high reliability; α ≥ .67 = acceptable; α < .67 = unreliable → prompt needs refinement.
+3. **Disagreement as diagnostic signal** — each disagreement type maps to a specific prompt-refinement action in `_generate_suggestions()`, not treated as generic noise.
+4. **Model caveat** — STAMP Table W1 flags GPT-4.1-mini as "Avoid" (poor recall). We use it because (a) it matches the professor's prototype, (b) its disagreements with Gemini are informative signals, and (c) a hackathon budget does not permit the full GPT-4.1 model.
+
+**Where**: `utils/judge.py` — `_JUDGE_USER_TEMPLATE` (adequacy fields); `utils/rag_evaluator.py` — `krippendorff_alpha()`, `build_disagreement_report()`, `_generate_suggestions()`
+
+---
+
 ## [2026-03-23] PyMuPDF with fallback to pdfplumber
 
 **Decision**: PDF loading tries `fitz` (PyMuPDF) first, falls back to `pdfplumber`, then raises a clear error.

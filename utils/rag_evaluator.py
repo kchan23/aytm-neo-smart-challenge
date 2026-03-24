@@ -41,6 +41,10 @@ class EvalResult:
     judge_confidence: str = "medium"
     judge_citations: list = field(default_factory=list)
 
+    # STAMP binary adequacy coding (0 = inadequate, 1 = adequate, -1 = not evaluated)
+    answer_a_adequate: int = -1   # GPT-4.1-mini
+    answer_b_adequate: int = -1   # Gemini-2.5-Flash
+
     # Accuracy scores
     gpt_rouge1: float = 0.0
     gemini_rouge1: float = 0.0
@@ -93,6 +97,43 @@ def _tokenize(text: str) -> list[str]:
     text = text.lower()
     text = text.translate(str.maketrans("", "", string.punctuation))
     return text.split()
+
+
+def krippendorff_alpha(ratings_a: list[int], ratings_b: list[int]) -> float:
+    """
+    Compute Krippendorff's alpha for binary nominal data with two raters.
+
+    Used per STAMP (Lin, under review) to measure inter-rater reliability between
+    two LLM coders on binary adequacy judgements (0 = inadequate, 1 = adequate).
+
+    Thresholds (STAMP / standard):
+      α ≥ .80 → high reliability
+      α ≥ .67 → acceptable (tentative conclusions)
+      α < .67 → unreliable — prompt needs refinement
+
+    Returns float in [-1, 1], or NaN if computation is undefined (e.g. all ratings identical).
+    """
+    if len(ratings_a) != len(ratings_b) or not ratings_a:
+        return float("nan")
+
+    n = len(ratings_a)
+    # Observed disagreement: proportion of items where raters differ
+    disagree = sum(a != b for a, b in zip(ratings_a, ratings_b))
+    D_o = disagree / n
+
+    # Expected disagreement using all 2n ratings (Krippendorff nominal metric)
+    all_ratings = ratings_a + ratings_b
+    N = len(all_ratings)  # = 2n
+    n0 = all_ratings.count(0)
+    n1 = all_ratings.count(1)
+
+    # Guard against degenerate case (all ratings identical → D_e = 0)
+    if N * (N - 1) == 0 or (n0 == 0 or n1 == 0):
+        return float("nan")
+
+    D_e = 2 * n0 * n1 / (N * (N - 1))
+
+    return round(1.0 - D_o / D_e, 4)
 
 
 def score_answer(prediction: str, ground_truth: str) -> dict:
@@ -195,6 +236,9 @@ def run_evaluation(
             result.disagreement_explanation = judge.get("disagreement_explanation", "")
             result.judge_confidence = judge.get("confidence", "medium")
             result.judge_citations = judge.get("citations", [])
+            # STAMP binary adequacy coding
+            result.answer_a_adequate = int(judge.get("answer_a_adequate", -1))
+            result.answer_b_adequate = int(judge.get("answer_b_adequate", -1))
 
             # 5. Score
             gpt_score = score_answer(answer_gpt, ground_truth)
@@ -279,9 +323,39 @@ def build_disagreement_report(results: list[EvalResult]) -> dict:
         for t, scores in topic_accuracy.items()
     }
 
+    # STAMP: Krippendorff's alpha from binary adequacy ratings
+    adequate_pairs = [
+        (r.answer_a_adequate, r.answer_b_adequate)
+        for r in valid
+        if r.answer_a_adequate in (0, 1) and r.answer_b_adequate in (0, 1)
+    ]
+    if adequate_pairs:
+        ratings_a = [p[0] for p in adequate_pairs]
+        ratings_b = [p[1] for p in adequate_pairs]
+        alpha = krippendorff_alpha(ratings_a, ratings_b)
+        # F1 per model: adequacy rate = proportion rated adequate
+        gpt_adequacy_rate = sum(ratings_a) / len(ratings_a)
+        gemini_adequacy_rate = sum(ratings_b) / len(ratings_b)
+    else:
+        alpha = float("nan")
+        gpt_adequacy_rate = float("nan")
+        gemini_adequacy_rate = float("nan")
+
+    alpha_str = f"{alpha:.3f}" if alpha == alpha else "N/A"  # NaN check
+
+    # STAMP reliability tier
+    if alpha != alpha:  # NaN
+        stamp_reliability = "undetermined"
+    elif alpha >= 0.80:
+        stamp_reliability = "high (α ≥ .80)"
+    elif alpha >= 0.67:
+        stamp_reliability = "acceptable (α ≥ .67)"
+    else:
+        stamp_reliability = "unreliable (α < .67) — refine prompt"
+
     # Prompt engineering suggestions
     suggestions = _generate_suggestions(
-        hallucination_rate, missing_context_rate, disagreement_rate, type_counts
+        hallucination_rate, missing_context_rate, disagreement_rate, type_counts, alpha
     )
 
     return {
@@ -298,6 +372,12 @@ def build_disagreement_report(results: list[EvalResult]) -> dict:
         "severity_counts": dict(severity_counts),
         "most_contested_questions": contested,
         "accuracy_by_topic": topic_avg,
+        # STAMP inter-rater reliability
+        "krippendorff_alpha": alpha_str,
+        "stamp_reliability_tier": stamp_reliability,
+        "gpt_adequacy_rate": round(gpt_adequacy_rate, 4) if gpt_adequacy_rate == gpt_adequacy_rate else "N/A",
+        "gemini_adequacy_rate": round(gemini_adequacy_rate, 4) if gemini_adequacy_rate == gemini_adequacy_rate else "N/A",
+        "stamp_rated_pairs": len(adequate_pairs),
         "prompt_engineering_suggestions": suggestions,
     }
 
@@ -307,46 +387,75 @@ def _generate_suggestions(
     missing_context_rate: float,
     disagreement_rate: float,
     type_counts: Counter,
+    alpha: float = float("nan"),
 ) -> list[str]:
-    """Rule-based prompt engineering suggestions."""
+    """
+    STAMP-aligned prompt engineering suggestions.
+
+    Per Lin (under review): inter-model disagreement is a diagnostic signal —
+    each type maps to a specific prompt refinement strategy.
+    """
     suggestions = []
+
+    # STAMP: low inter-rater reliability → refine the coding prompt
+    if alpha == alpha and alpha < 0.67:  # not NaN and below threshold
+        suggestions.append(
+            f"[STAMP] Low inter-rater reliability (α = {alpha:.3f}, threshold α ≥ .67): "
+            "The two LLMs are producing divergent adequacy judgements. Per the STAMP methodology, "
+            "this signals the system prompt needs a clearer definition of 'adequate answer', "
+            "explicit inclusion/exclusion criteria, and grounded examples with chain-of-thought. "
+            "Refine the system prompt before drawing conclusions from this evaluation."
+        )
+    elif alpha == alpha and alpha < 0.80:
+        suggestions.append(
+            f"[STAMP] Acceptable inter-rater reliability (α = {alpha:.3f}). "
+            "Findings are tentatively valid. Aim for α ≥ .80 for high-confidence conclusions. "
+            "Add 1–2 chain-of-thought examples to the system prompt to tighten agreement."
+        )
 
     if missing_context_rate > 0.30:
         suggestions.append(
-            f"High missing-context rate ({missing_context_rate:.0%}): Add more building code "
-            "documents to data/building_codes/ to improve retrieval coverage."
+            f"[Missing context — {missing_context_rate:.0%}] Retrieval is failing to surface "
+            "relevant chunks. Action: (1) Add more building code documents to data/building_codes/, "
+            "(2) increase top_k, or (3) switch to embedding-based retrieval for semantic coverage."
         )
 
     if hallucination_rate > 0.20:
         suggestions.append(
-            f"High hallucination rate ({hallucination_rate:.0%}): Strengthen the system prompt "
-            "with 'Answer ONLY from the provided context. If the answer is not in the context, "
-            "say I don\\'t know.' Consider reducing LLM temperature."
+            f"[Hallucination — {hallucination_rate:.0%}] Models are adding facts not present in "
+            "retrieved context. Action: Strengthen the grounding instruction — "
+            "'Answer ONLY from the provided context. If the answer is absent, say so explicitly.' "
+            "Reduce temperature to 0.1. Consider a stricter no-fabrication example in the prompt."
         )
 
     if type_counts.get("ambiguous_source", 0) > 2:
         suggestions.append(
-            "Several ambiguous-source disagreements detected: The source documents may have "
-            "conflicting or unclear language. Consider adding more specific section references "
-            "to the source documents or increasing chunk overlap."
+            "[Ambiguous source] Multiple questions triggered ambiguous-source disagreements. "
+            "Action: The source documents contain unclear or conflicting language. "
+            "Add explicit section-citation instructions to the prompt, increase chunk overlap, "
+            "or annotate ambiguous passages in the source documents."
         )
 
     if type_counts.get("factual_conflict", 0) > 1:
         suggestions.append(
-            "Factual conflicts detected between models: Review the contested questions and "
-            "verify ground truth answers against authoritative source documents."
+            "[Factual conflict] Direct factual contradictions detected between models. "
+            "Action: Review the contested questions in 'Most Contested' table and verify "
+            "ground truth against authoritative source documents. "
+            "These items may expose errors in the source PDFs or the ground-truth Q&A set."
         )
 
     if disagreement_rate > 0.50:
         suggestions.append(
-            f"Overall disagreement rate is high ({disagreement_rate:.0%}): Consider increasing "
-            "top_k retrieved chunks to give models more context, or try the embedding "
-            "retrieval method for more semantic search coverage."
+            f"[High disagreement — {disagreement_rate:.0%}] More than half of questions trigger "
+            "model disagreement. Action: Increase top_k retrieved chunks, try embedding retrieval, "
+            "or add a clearer answer-format template to the system prompt."
         )
 
     if not suggestions:
         suggestions.append(
-            "No major issues detected. Models are generally in agreement with good context coverage."
+            "No major issues detected. Models show strong inter-rater agreement with good "
+            "context coverage. Per STAMP, this indicates the prompt and retrieval pipeline "
+            "are well-calibrated for this question set."
         )
 
     return suggestions
