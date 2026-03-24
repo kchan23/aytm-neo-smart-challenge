@@ -6,7 +6,7 @@ from scipy import stats
 from pathlib import Path
 
 # Data lives in prototype/output/ — resolve relative to this file's location
-DATA_PATH = Path(__file__).parent.parent.parent / "prototype" / "output" / "synthetic_responses.csv"
+DATA_PATH = Path(__file__).resolve().parent.parent / "output" / "synthetic_responses.csv"
 
 LIKERT_KEYS = {
     "Q0b": "Category Interest",

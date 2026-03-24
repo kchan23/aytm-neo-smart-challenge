@@ -11,7 +11,7 @@ from pathlib import Path
 
 st.set_page_config(page_title="Interview Insights", page_icon="🎤", layout="wide")
 
-DATA_DIR = Path(__file__).parent.parent.parent / "prototype" / "output"
+DATA_DIR = Path(__file__).resolve().parent.parent / "output"
 TRANSCRIPT_PATH = DATA_DIR / "interview_transcripts.csv"
 ANALYSIS_PATH = DATA_DIR / "interview_analysis.csv"
 THEMES_PATH = DATA_DIR / "interview_themes.json"
